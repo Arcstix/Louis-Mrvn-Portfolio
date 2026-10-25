@@ -33,17 +33,17 @@ window.PORTFOLIO = {
     { type: "edu", date: "2026 — 2028", title: "Mastère Game Programming", place: "ICAN, Paris",
       text: "Programmation gameplay, Unity, C#, Unreal, C++, IA. Projets de groupe avec des game designers et des artistes." },
     { type: "pro", date: "2026 · 6 mois", title: "Stage développeur R&D", place: "EDF, Palaiseau",
-      text: " Analyse des facteurs causant la cyber cinétose. Développement de solutions techniques. Regroupement de plusieurs applications au sein d'un outil unique." },
+      text: "Analyse des facteurs causant la cybercinétose. Développement de solutions techniques. Regroupement de plusieurs applications au sein d'un outil unique." },
     { type: "pro", date: "2024 — 2026", title: "Game Master", place: "Glorious Escape, Vélizy-Villacoublay",
       text: "Accueil des joueurs, explication des règles et acting." }, 
     { type: "pro", date: "2025 · 2 mois", title: "Stage Unity Développeur RA", place: "Immersize Studio, Remote",
       text: "Veille technologique sur la modélisation 3D et la RA. Création d'un Escape Game en réalité augmentée." },
     { type: "edu", date: "2023 — 2025", title: "Bachelor Game Design", place: "ICAN, Paris",
-      text: "Programmation gameplay, Unity, C#, Game Design, Blender. Plusieurs projets en groupe de 6 avec chacun un rôle" },
+      text: "Programmation gameplay, Unity, C#, Game Design, Blender. Plusieurs projets en groupe de 6 avec chacun un rôle." },
     { type: "edu", date: "2022 · 6 mois", title: "Associate Game Developer", place: "3W ACADEMY, Remote",
-      text: "Programmation gameplay, Unity, C#" }, 
+      text: "Programmation gameplay, Unity, C#." }, 
     { type: "edu", date: "2019 — 2021", title: "DUT Mesures Physiques", place: "Université d'Orsay, Paris-Saclay",
-      text: "Métrologie, mathématique, mécanique des fluides, système embarqué et programmation" }
+      text: "Métrologie, mathématiques, mécanique des fluides, systèmes embarqués et programmation." }
   ],
 
   contact: [
@@ -74,19 +74,19 @@ window.PORTFOLIO = {
     { id: "unity", kind: "skill", rarity: "gold", title: "Unity", glyph: "U", color: "#e8ebf2", icon: "",
       stat: "5 ans d'expérience", text: "Mon moteur principal : gameplay, outils d'éditeur, UI, optimisation." },
     { id: "csharp", kind: "skill", rarity: "gold", title: "C#", glyph: "C#", color: "#b48cff", icon: "",
-      stat: "[X] ans de pratique", text: "Langage que je maîtrise le mieux : POO, design patterns, async, LINQ." },
+      stat: "Depuis 2022", text: "Langage que je maîtrise le mieux : POO, design patterns, async, LINQ." },
     { id: "unreal", kind: "skill", rarity: "silver", title: "Unreal Engine", glyph: "UE", color: "#cfd6e4", icon: "",
       stat: "En apprentissage", text: "Actors, Components, Blueprints et Enhanced Input, étudiés en Mastère." },
     { id: "cpp", kind: "skill", rarity: "silver", title: "C++", glyph: "C++", color: "#6aa8ff", icon: "",
       stat: "En apprentissage", text: "Pointeurs, mémoire, macros Unreal (UPROPERTY, UFUNCTION)." },
     { id: "blender", kind: "skill", rarity: "silver", title: "Blender", glyph: "B", color: "#ffb84d", icon: "",
-      stat: "[X] ans", text: "Modélisation, UV, export FBX / glTF vers Unity et Unreal." },
+      stat: "Depuis 2023", text: "Modélisation, UV, export FBX / glTF vers Unity et Unreal." },
     { id: "python", kind: "skill", rarity: "bronze", title: "Python", glyph: "Py", color: "#ffd84d", icon: "",
       stat: "Addons Blender", text: "Scripts bpy pour automatiser mon pipeline 3D." },
     { id: "git", kind: "skill", rarity: "bronze", title: "Git / GitHub", glyph: "git", color: "#ff7a59", icon: "",
       stat: "Tous mes projets", text: "Branches, pull requests, Git LFS pour les assets." },
     { id: "master", kind: "profile", rarity: "bronze", title: "Mastère", glyph: "M1", color: "#5ef0b5", icon: "",
-      stat: "Game Programming · 1re année", text: "[Nom de l'école], [Ville]." },
+      stat: "Game Programming · 1re année", text: "ICAN, Paris. Gameplay, moteurs, C++ et IA." },
     { id: "langues", kind: "profile", rarity: "bronze", title: "Langues", glyph: "FR", color: "#5ef0b5", icon: "",
       stat: "Français · Anglais", text: "[Niveau d'anglais, certification éventuelle.]" },
 
@@ -113,17 +113,17 @@ window.PORTFOLIO = {
       category: "Unreal",
       duration: "3 mois",
       team: "2 personnes (2 dev)",
-      context: "Projet 1er année de Mastère Game Programming",
+      context: "Projet de 1re année de Mastère Game Programming",
       year: "2026",
-      role: "Développement de l'outil",
-      status: "Disponible sur GitHub",
+      role: "Gameplay programmer",
+      status: "Terminé",
       cover: "assets/CoverBQ.png",
       color: "#9b8cff",
       youtube: "",
       itchUrl: "https://louismrvn.itch.io/be-quiet",
       itchEmbed: "",
       githubUrl: "https://github.com/Arcstix/UE_Stealth_Game",
-      summary: "Tu es coincé dans un bâtiment avec un monstre et ton objectif et de sortir de cette endroit en faisant le moins de bruit possible.",
+      summary: "Tu es coincé dans un bâtiment avec un monstre et ton objectif est de sortir de cet endroit en faisant le moins de bruit possible.",
       contributions: [
           "Déplacement du personnage joueur",
           "Mécanique d'émission/réception de son"
@@ -151,14 +151,14 @@ window.PORTFOLIO = {
       itchUrl: "https://louismrvn.itch.io/oryn",          // ex : "https://pseudo.itch.io/mon-jeu"
       itchEmbed: "",        // ex : "1234567"
       githubUrl: "https://github.com/Arcstix/ProjetAnnuel3GD",
-      summary: "Ce jeu possède 2 mécaniques complémentaire d'attraction et de répulsion. Le joueur utilise sa mécanique d'attraction pour se déplacer et sa mécanique de répulsion pour détruire les obstacles sur son chemin.",
+      summary: "Ce jeu possède 2 mécaniques complémentaires d'attraction et de répulsion. Le joueur utilise sa mécanique d'attraction pour se déplacer et sa mécanique de répulsion pour détruire les obstacles sur son chemin.",
       contributions: [
         "Contrôleur du personnage (déplacement, attraction et répulsion des objets).",
         "IA ennemie avec machine à états style caméra de surveillance."
       ],
       challenges: [
-        { title: "Défi technique n°1", text: "Le problème principal était d'avoir une évolution fluide entre les phases d'attraction et de répulsion. Ma solution a été de faire une machine à état. Le résultat donne des phases bien distinct et évite des superpositions non voulu dans les mécaniques." },
-        { title: "Défi technique n°2", text: "Le comportement des objets qui permettent d'utiliser la mécanique principale a été très différent tout au long du développement. Cela m'a demandé de créer un système modulaire qui permet de passer d'un comportement à un autre facilement pour les tests." }
+        { title: "Passer de l'attraction à la répulsion", text: "Le problème principal était d'avoir une évolution fluide entre les phases d'attraction et de répulsion. Ma solution a été de faire une machine à états. Le résultat donne des phases bien distinctes et évite des superpositions non voulues dans les mécaniques." },
+        { title: "Des objets au comportement modulaire", text: "Le comportement des objets qui permettent d'utiliser la mécanique principale a été très différent tout au long du développement. Cela m'a demandé de créer un système modulaire qui permet de passer d'un comportement à un autre facilement pour les tests." }
       ]
     },
     {
@@ -170,7 +170,7 @@ window.PORTFOLIO = {
       category: "Unity",
       duration: "6 mois",
       team: "5 personnes (2 dev, 1 GD, 2 artistes)",
-      context: "Projet fin de 2ème année de Bachelor",
+      context: "Projet de fin de 2e année de Bachelor",
       year: "2024",
       role: "Programmation",
       status: "Terminé",
@@ -180,13 +180,13 @@ window.PORTFOLIO = {
       itchUrl: "https://tuturgames.itch.io/traffic-hell",
       itchEmbed: "",
       githubUrl: "",
-      summary: "Dans Traffic Hell, semez le chaos au sein d'une ville calme et tranquille. Provoquez des carambolages afin d'augmenter votre jauge de chaos et faite en sorte que la ville ne soit plus capable de s'en remettre.",
+      summary: "Dans Traffic Hell, semez le chaos au sein d'une ville calme et tranquille. Provoquez des carambolages afin d'augmenter votre jauge de chaos et faites en sorte que la ville ne soit plus capable de s'en remettre.",
       contributions: [
         "Logique de conduite des voitures",
         "Création d'un outil afin de réaliser des niveaux plus facilement dans Unity."
       ],
       challenges: [
-        { title: "Un simulateur dans un jeu", text: "L'état initial du jeu doit faire en sorte qu'il n'y ait aucun accident sans l'intervention du joueur. Il était donc crucial d'implémenter les différentes règles du code de la route dans le comportement des voitures. " }
+        { title: "Un simulateur dans un jeu", text: "L'état initial du jeu doit faire en sorte qu'il n'y ait aucun accident sans l'intervention du joueur. Il était donc crucial d'implémenter les différentes règles du code de la route dans le comportement des voitures." }
       ]
     },
     {
@@ -198,7 +198,7 @@ window.PORTFOLIO = {
       category: "Unity",
       duration: "3 mois",
       team: "3 personnes (1 dev, 1 GD, 1 artiste)",
-      context: "Projet début de 2ème année de Bachelor",
+      context: "Projet de début de 2e année de Bachelor",
       year: "2023",
       role: "Programmation",
       status: "Terminé",
@@ -208,9 +208,9 @@ window.PORTFOLIO = {
       itchUrl: "https://lonknico.itch.io/stellar-hive",
       itchEmbed: "",
       githubUrl: "https://github.com/Arcstix/ProjetSemestriel2GDA",
-      summary: "Incarne une étoile blanche capable d'attirer les autres de couleur autour d'elle. Accumule un maximum d'étoile et profite du feu d'artifice en les faisant toutes exploser.",
+      summary: "Incarne une étoile blanche capable d'attirer les autres de couleur autour d'elle. Accumule un maximum d'étoiles et profite du feu d'artifice en les faisant toutes exploser.",
       contributions: [
-        "Control du personnage",
+        "Contrôle du personnage",
         "Système de suivi des étoiles"
       ],
       challenges: [
