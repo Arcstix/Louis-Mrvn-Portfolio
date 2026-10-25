@@ -15,6 +15,15 @@
   --glow-1: rgba(94, 240, 181, .08);
   --glow-2: rgba(255, 93, 115, .06);
   --placeholder: #2a3142;
+  --page-bg: #05060a;
+  --frame-bg: rgba(13, 15, 20, .96);
+  --frame-r: 24px;
+  --code-base: rgba(139, 147, 167, .20);
+  --code-kw: rgba(94, 240, 181, .30);
+  --code-type: rgba(106, 168, 255, .28);
+  --code-str: rgba(255, 184, 77, .28);
+  --code-com: rgba(139, 147, 167, .12);
+  --code-num: rgba(255, 93, 115, .28);
   color-scheme: dark;
   --radius: 14px;
   --max: 1160px;
@@ -24,12 +33,10 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+html { background: var(--page-bg); }
 body {
   margin: 0;
-  background:
-    radial-gradient(900px 500px at 15% -10%, var(--glow-1), transparent 60%),
-    radial-gradient(700px 400px at 100% 10%, var(--glow-2), transparent 60%),
-    var(--bg);
+  background: transparent;
   color: var(--text);
   font-family: var(--font);
   font-size: 17px;
@@ -52,8 +59,9 @@ code, kbd { font-family: var(--mono); font-size: .85em; background: var(--bg-2);
 .topbar {
   position: sticky; top: 0; z-index: 20;
   display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-  max-width: var(--max); margin: 0 auto; padding: 14px 16px;
+  padding: 14px max(16px, calc((100% - var(--max)) / 2 + 16px));
   background: var(--topbar); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line); border-radius: var(--frame-r) var(--frame-r) 0 0;
 }
 .brand { font-family: var(--mono); font-weight: 600; text-decoration: none; font-size: 1.05rem; }
 .brand span { color: var(--accent); }
@@ -423,6 +431,14 @@ code, kbd { font-family: var(--mono); font-size: .85em; background: var(--bg-2);
   --glow-1: rgba(11, 148, 102, .10);
   --glow-2: rgba(220, 52, 80, .06);
   --placeholder: #c6cdd9;
+  --page-bg: #dde2ec;
+  --frame-bg: rgba(245, 246, 250, .96);
+  --code-base: rgba(60, 70, 92, .26);
+  --code-kw: rgba(11, 148, 102, .40);
+  --code-type: rgba(45, 107, 208, .36);
+  --code-str: rgba(184, 105, 10, .36);
+  --code-com: rgba(60, 70, 92, .16);
+  --code-num: rgba(220, 52, 80, .34);
   color-scheme: light;
 }
 /* La machine et les cartes sont des "objets" : elles gardent leurs couleurs sombres dans les deux thèmes */
@@ -456,3 +472,31 @@ code, kbd { font-family: var(--mono); font-size: .85em; background: var(--bg-2);
 /* Couleurs de projet assombries pour rester lisibles sur fond clair */
 :root[data-theme="light"] .card .meta span:first-child,
 :root[data-theme="light"] .cover-gen { color: color-mix(in srgb, var(--c) 62%, #000); }
+
+/* =========================================================================
+   CADRE AU PREMIER PLAN + FOND ANIMÉ
+   ========================================================================= */
+#bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+/* vignette : le code s'efface vers les bords et derrière le cadre */
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 35%, var(--page-bg) 100%);
+}
+.frame {
+  position: relative; z-index: 1;
+  max-width: 1240px; margin: 32px auto;
+  border: 1px solid var(--line); border-radius: var(--frame-r);
+  background:
+    radial-gradient(900px 500px at 15% -10%, var(--glow-1), transparent 60%),
+    radial-gradient(700px 400px at 100% 10%, var(--glow-2), transparent 60%),
+    var(--frame-bg);
+  backdrop-filter: blur(3px);
+  box-shadow: 0 0 0 1px rgba(94, 240, 181, .04), 0 50px 120px -40px rgba(0, 0, 0, .85);
+}
+:root[data-theme="light"] .frame { box-shadow: 0 40px 100px -40px rgba(20, 24, 33, .45); }
+.frame > .footer { border-top: 1px solid var(--line); margin-top: 64px; padding: 28px 16px; }
+@media (max-width: 1300px) { .frame { margin: 24px 20px; } }
+@media (max-width: 640px) {
+  :root { --frame-r: 16px; }
+  .frame { margin: 10px 8px; }
+}

@@ -90,14 +90,14 @@ window.PORTFOLIO = {
     { id: "langues", kind: "profile", rarity: "bronze", title: "Langues", glyph: "FR", color: "#5ef0b5", icon: "",
       stat: "Français · Anglais", text: "[Niveau d'anglais, certification éventuelle.]" },
 
-    { id: "card-projet-1", kind: "project", rarity: "gold", project: "projet-exemple-1",
-      stat: "Gameplay programmer", text: "Contrôleur du personnage, IA ennemie, système de vagues." },
-    { id: "card-projet-2", kind: "project", rarity: "silver", project: "projet-exemple-2",
-      stat: "Game jam · 48 h", text: "Saut au game feel soigné et éditeur de niveaux." },
-    { id: "card-projet-3", kind: "project", rarity: "bronze", project: "projet-exemple-3",
-      stat: "Premier projet Unreal", text: "Personnage en C++ et composant de santé réutilisable." },
-    { id: "card-addon", kind: "project", rarity: "silver", project: "addon-blender",
-      stat: "Outil Python", text: "Export FBX en lot avec les bons axes et la bonne échelle." }
+      { id: "card-oryn", kind: "project", rarity: "gold", project: "projet-oryn",
+          stat: "Projet de fin de Bachelor", text: "Contrôleur attraction / répulsion et IA de caméras de surveillance." },
+      { id: "card-traffic-hell", kind: "project", rarity: "gold", project: "projet-traffic-hell",
+          stat: "Puzzle · simulation", text: "Conduite des voitures selon le code de la route et outil de création de niveaux." },
+      { id: "card-be-quiet", kind: "project", rarity: "gold", project: "projet-be-quiet",
+          stat: "Unreal · C++", text: "Déplacements du joueur et propagation du son à travers les murs." },
+      { id: "card-stellar-hive", kind: "project", rarity: "silver", project: "projet-stellar-hive",
+          stat: "Prototype jouet", text: "Contrôle du personnage et étoiles qui suivent le joueur, optimisées." }
   ],
 
   /* ---------------------------------------------------------------------
