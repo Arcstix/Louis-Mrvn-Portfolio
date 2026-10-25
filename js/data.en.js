@@ -23,6 +23,8 @@ window.PORTFOLIO_EN = {
 
   // Même ordre que la timeline de data.js (du plus récent au plus ancien)
   timeline: [
+    { title: "VR / AR Developer (work-study)",
+      text: "Following my internship: working on various virtual and augmented reality projects." },
     { title: "Master's in Game Programming",
       text: "Gameplay programming, Unity, C#, Unreal, C++, AI. Group projects with game designers and artists." },
     { date: "2026 · 6 months", title: "R&D Developer Intern",

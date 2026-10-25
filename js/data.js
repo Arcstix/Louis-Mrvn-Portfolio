@@ -30,6 +30,8 @@ window.PORTFOLIO = {
 
   // Du plus récent au plus ancien
   timeline: [
+    { type: "pro", date: "2026 — 2028", title: "Alternance développeur VR / AR", place: "EDF, Palaiseau",
+      text: "Suite de mon stage : participation à différents projets de réalité virtuelle et de réalité augmentée." },
     { type: "edu", date: "2026 — 2028", title: "Mastère Game Programming", place: "ICAN, Paris",
       text: "Programmation gameplay, Unity, C#, Unreal, C++, IA. Projets de groupe avec des game designers et des artistes." },
     { type: "pro", date: "2026 · 6 mois", title: "Stage développeur R&D", place: "EDF, Palaiseau",
