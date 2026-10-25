@@ -6,7 +6,8 @@
   "use strict";
   const D = window.PORTFOLIO;
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-  const KIND_LABEL = { skill: "Compétence", project: "Projet", profile: "Profil" };
+  const L = (k, v) => (window.I18N ? I18N.t(k, v) : k);
+  const KIND_LABEL = { skill: L("kind.skill"), project: L("kind.project"), profile: L("kind.profile") };
   const STARS = { gold: "★★★", silver: "★★", bronze: "★" };
 
   /* ---- Résolution : une carte "project" récupère titre et image du projet ---- */
@@ -63,7 +64,7 @@
     return `
       <${tag} class="tcard r-${c.rarity}${locked ? " locked" : ""}${c.kind === "project" ? " is-project" : ""}"${href}
         style="--c:${esc(c.color)}" data-id="${esc(c.id)}" ${opts.button && !locked ? 'tabindex="0" role="button"' : ""}
-        aria-label="${locked ? "Carte non obtenue" : esc(c.title)}">
+        aria-label="${locked ? esc(L("card.locked")) : esc(c.title)}">
         <div class="tc-inner">
           <div class="tc-band"><span>${esc(D.rarity[c.rarity].label)}</span><span>#${String(c.num).padStart(2, "0")}/${cards.length}</span></div>
           <div class="tc-art">${art}</div>
@@ -72,7 +73,7 @@
             <h3>${locked ? "???" : esc(c.title)}</h3>
             ${locked ? "" : `<p class="tc-stat">${esc(c.stat)}</p><p class="tc-text">${esc(c.text)}</p>`}
           </div>
-          <div class="tc-band bottom"><span>${STARS[c.rarity]}</span>${c.href && !locked ? "<span>voir le projet →</span>" : ""}</div>
+          <div class="tc-band bottom"><span>${STARS[c.rarity]}</span>${c.href && !locked ? `<span>${esc(L("card.seeProject"))}</span>` : ""}</div>
         </div>
         ${c.rarity === "gold" && !locked ? '<div class="tc-shine"></div>' : ""}
       </${tag}>`;
@@ -106,7 +107,7 @@
     lastFocus = document.activeElement;
     m.querySelector("#cmTitle").textContent = title;
     m.querySelector("#cmFront").innerHTML = render(c, { link: true });
-    m.querySelector("#cmActions").innerHTML = actions + `<button class="btn" type="button" data-close>Fermer</button>`;
+    m.querySelector("#cmActions").innerHTML = actions + `<button class="btn" type="button" data-close>${esc(L("btn.close"))}</button>`;
     m.className = `card-modal r-${c.rarity}${reveal ? " reveal" : ""}`;
     const flip = m.querySelector("#cmFlip");
     flip.classList.remove("go"); void flip.offsetWidth; flip.classList.add("go"); // relance l'animation
@@ -150,7 +151,7 @@
 
   function draw_() {
     const n = Cards.count, t = Cards.total;
-    prog.textContent = `${n} / ${t} cartes`;
+    prog.textContent = L("col.count", { n, t });
     bar.style.width = `${(n / t) * 100}%`;
     const per = ["gold", "silver", "bronze"].map((r) => {
       const all = cards.filter((c) => c.rarity === r);
@@ -163,7 +164,7 @@
       (ownFilter === "all" || (ownFilter === "owned") === owned.has(c.id)));
     grid.innerHTML = list.length
       ? list.map((c) => render(c, { locked: !owned.has(c.id), button: true })).join("")
-      : `<p class="muted" style="grid-column:1/-1;text-align:center">Aucune carte ici.</p>`;
+      : `<p class="muted" style="grid-column:1/-1;text-align:center">${esc(L("col.none"))}</p>`;
     document.getElementById("colEmpty").hidden = n > 0;
   }
 
@@ -179,7 +180,7 @@
     const c = byId[el.dataset.id];
     if (!c || !owned.has(c.id)) return;
     openModal(c, { title: `${KIND_LABEL[c.kind]} · ${D.rarity[c.rarity].label}`,
-      actions: c.href ? `<a class="btn primary" href="${esc(c.href)}">Voir le projet</a>` : "" });
+      actions: c.href ? `<a class="btn primary" href="${esc(c.href)}">${esc(L("btn.viewProject"))}</a>` : "" });
   }
   grid.addEventListener("click", (e) => { const el = e.target.closest(".tcard"); if (el) openFromGrid(el); });
   grid.addEventListener("keydown", (e) => {
@@ -192,11 +193,11 @@
   let armed = false, armT = 0;
   resetBtn.addEventListener("click", () => {
     if (!armed) {
-      armed = true; resetBtn.textContent = "Confirmer la remise à zéro ?";
-      clearTimeout(armT); armT = setTimeout(() => { armed = false; resetBtn.textContent = "Remettre à zéro"; }, 3000);
+      armed = true; resetBtn.textContent = L("col.confirm");
+      clearTimeout(armT); armT = setTimeout(() => { armed = false; resetBtn.textContent = L("col.reset"); }, 3000);
       return;
     }
-    armed = false; resetBtn.textContent = "Remettre à zéro";
+    armed = false; resetBtn.textContent = L("col.reset");
     Cards.reset(); draw_();
   });
 

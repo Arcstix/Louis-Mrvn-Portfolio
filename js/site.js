@@ -2,6 +2,7 @@
 (function () {
   "use strict";
   const D = window.PORTFOLIO;
+  const t = (k, v) => (window.I18N ? I18N.t(k, v) : k);
   const $ = (s) => document.querySelector(s);
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const initials = (t) => t.split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
@@ -17,9 +18,10 @@
     $("#skillTags").innerHTML = D.skills.map((s) => `<li>${esc(s)}</li>`).join("");
 
     // Filtres
-    const cats = ["Tous", ...new Set(D.projects.map((p) => p.category))];
+    const ALL = "__all";
+    const cats = [ALL, ...new Set(D.projects.map((p) => p.category))];
     const filters = $("#filters");
-    filters.innerHTML = cats.map((c, i) => `<button class="chip" type="button" data-cat="${esc(c)}" aria-pressed="${i === 0}">${esc(c)}</button>`).join("");
+    filters.innerHTML = cats.map((c, i) => `<button class="chip" type="button" data-cat="${esc(c)}" aria-pressed="${i === 0}">${esc(c === ALL ? t("filter.all") : c)}</button>`).join("");
     filters.addEventListener("click", (e) => {
       const b = e.target.closest("button");
       if (!b) return;
@@ -28,10 +30,10 @@
     });
 
     function drawCards(cat) {
-      const list = D.projects.filter((p) => cat === "Tous" || p.category === cat);
+      const list = D.projects.filter((p) => cat === ALL || p.category === cat);
       $("#projectCards").innerHTML = list.map((p) => `
         <a class="card" href="project.html?id=${encodeURIComponent(p.id)}" style="--c:${esc(p.color || "var(--accent)")}">
-          <div class="cover">${coverHTML(p)}<span class="arrow">ouvrir →</span></div>
+          <div class="cover">${coverHTML(p)}<span class="arrow">${esc(t("card.open"))}</span></div>
           <div class="body">
             <h3>${esc(p.title)}</h3>
             <p>${esc(p.tagline)}</p>
@@ -39,26 +41,26 @@
           </div>
         </a>`).join("");
     }
-    drawCards("Tous");
+    drawCards(ALL);
 
     // Qui suis-je
     $("#aboutPhoto").innerHTML = D.photo
-      ? `<img src="${esc(D.photo)}" alt="Photo de ${esc(D.name)}" loading="lazy">`
+      ? `<img src="${esc(D.photo)}" alt="${esc(t("photo.alt", { name: D.name }))}" loading="lazy">`
       : `<div class="photo-placeholder" role="img" aria-label="Emplacement de la photo">
            <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="38" r="17"/><path d="M18 92c2-20 16-31 32-31s30 11 32 31z"/></svg>
-           <span class="mono">// votre photo ici</span>
+           <span class="mono">${esc(t("photo.placeholder"))}</span>
            <span class="mono muted">data.js → photo</span>
          </div>`;
-    $("#aboutText").innerHTML = D.about.map((t) => `<p>${esc(t)}</p>`).join("");
+    $("#aboutText").innerHTML = D.about.map((a) => `<p>${esc(a)}</p>`).join("");
     $("#aboutStats").innerHTML = D.stats.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("");
 
     // Parcours
-    $("#timeline").innerHTML = D.timeline.map((t) => `
-      <li class="tl-item ${t.type === "pro" ? "pro" : "edu"}">
-        <span class="date">${esc(t.date)}</span>
-        <h3>${esc(t.title)}</h3>
-        <div class="place">${esc(t.place)}</div>
-        <p>${esc(t.text)}</p>
+    $("#timeline").innerHTML = D.timeline.map((e) => `
+      <li class="tl-item ${e.type === "pro" ? "pro" : "edu"}">
+        <span class="date">${esc(e.date)}</span>
+        <h3>${esc(e.title)}</h3>
+        <div class="place">${esc(e.place)}</div>
+        <p>${esc(e.text)}</p>
       </li>`).join("");
     const items = document.querySelectorAll(".tl-item");
     if ("IntersectionObserver" in window) {
@@ -80,7 +82,7 @@
     const idx = D.projects.findIndex((p) => p.id === id);
     const root = $("#projectRoot");
     if (idx < 0) {
-      root.innerHTML = `<div class="p-head"><h1>Projet introuvable</h1><p class="tagline">Ce projet n'existe pas ou a été renommé.</p><p><a class="btn" href="index.html#projets">Retour aux projets</a></p></div>`;
+      root.innerHTML = `<div class="p-head"><h1>${esc(t("project.notFound"))}</h1><p class="tagline">${esc(t("project.notFoundText"))}</p><p><a class="btn" href="index.html#projets">${esc(t("project.back"))}</a></p></div>`;
       return;
     }
     const p = D.projects[idx];
@@ -89,8 +91,8 @@
     const next = D.projects[(idx + 1) % D.projects.length];
 
     const media = p.youtube
-      ? `<button class="yt-lite" type="button" aria-label="Lire le trailer" style="background-image:url(https://i.ytimg.com/vi/${esc(p.youtube)}/hqdefault.jpg)" data-id="${esc(p.youtube)}"></button>`
-      : `<div class="empty">// trailer à venir<br>ajoutez l'ID YouTube dans data.js</div>`;
+      ? `<button class="yt-lite" type="button" aria-label="${esc(t("project.playTrailer"))}" style="background-image:url(https://i.ytimg.com/vi/${esc(p.youtube)}/hqdefault.jpg)" data-id="${esc(p.youtube)}"></button>`
+      : `<div class="empty">${t("project.trailerSoon")}</div>`;
 
     const field = (k, v) => v ? `<div class="field"><span>${esc(k)}</span><span>${esc(v)}</span></div>` : "";
     const comp = (name, body) => `<details class="comp" open><summary><i></i>${esc(name)}</summary>${body}<div class="pad"></div></details>`;
@@ -105,21 +107,21 @@
       <div class="p-grid">
         <div>
           <div class="media" id="media">${media}</div>
-          <div class="block"><h2>Le projet</h2><p>${esc(p.summary)}</p></div>
-          ${p.contributions?.length ? `<div class="block"><h2>Ce que j'ai fait</h2><ul>${p.contributions.map((c) => `<li>${esc(c)}</li>`).join("")}</ul></div>` : ""}
-          ${p.challenges?.length ? `<div class="block"><h2>Défis techniques</h2>${p.challenges.map((c) => `<div class="challenge"><h3>${esc(c.title)}</h3><p>${esc(c.text)}</p></div>`).join("")}</div>` : ""}
-          ${p.itchEmbed ? `<div class="block"><h2>Jouer</h2><iframe class="itch-embed" loading="lazy" src="https://itch.io/embed/${esc(p.itchEmbed)}?dark=true" title="${esc(p.title)} sur itch.io"></iframe></div>` : ""}
+          <div class="block"><h2>${esc(t("project.about"))}</h2><p>${esc(p.summary)}</p></div>
+          ${p.contributions?.length ? `<div class="block"><h2>${esc(t("project.did"))}</h2><ul>${p.contributions.map((c) => `<li>${esc(c)}</li>`).join("")}</ul></div>` : ""}
+          ${p.challenges?.length ? `<div class="block"><h2>${esc(t("project.challenges"))}</h2>${p.challenges.map((c) => `<div class="challenge"><h3>${esc(c.title)}</h3><p>${esc(c.text)}</p></div>`).join("")}</div>` : ""}
+          ${p.itchEmbed ? `<div class="block"><h2>${esc(t("project.play"))}</h2><iframe class="itch-embed" loading="lazy" src="https://itch.io/embed/${esc(p.itchEmbed)}?dark=true" title="${esc(p.title)} · itch.io"></iframe></div>` : ""}
         </div>
-        <aside class="inspector" aria-label="Fiche technique">
+        <aside class="inspector" aria-label="${esc(t("project.sheet"))}">
           <header>▣ <b>${esc(p.title)}</b><span style="margin-left:auto">Inspector</span></header>
-          ${comp("Transform", field("Année", p.year) + field("Durée", p.duration) + field("Contexte", p.context))}
-          ${comp("Engine", field("Moteur", p.engine) + field("Langage", p.language))}
-          ${comp("Team", field("Équipe", p.team) + field("Mon rôle", p.role))}
-          ${comp("Build", field("Statut", p.status))}
+          ${comp("Transform", field(t("field.year"), p.year) + field(t("field.duration"), p.duration) + field(t("field.context"), p.context))}
+          ${comp("Engine", field(t("field.engine"), p.engine) + field(t("field.language"), p.language))}
+          ${comp("Team", field(t("field.team"), p.team) + field(t("field.role"), p.role))}
+          ${comp("Build", field(t("field.status"), p.status))}
           <div class="actions">
-            ${p.itchUrl ? `<a class="btn primary full" href="${esc(p.itchUrl)}" target="_blank" rel="noopener">Jouer sur itch.io</a>` : ""}
-            ${p.githubUrl ? `<a class="btn full" href="${esc(p.githubUrl)}" target="_blank" rel="noopener">Voir le code</a>` : ""}
-            ${p.youtube ? `<a class="btn full" href="https://www.youtube.com/watch?v=${esc(p.youtube)}" target="_blank" rel="noopener">Trailer sur YouTube</a>` : ""}
+            ${p.itchUrl ? `<a class="btn primary full" href="${esc(p.itchUrl)}" target="_blank" rel="noopener">${esc(t("btn.playItch"))}</a>` : ""}
+            ${p.githubUrl ? `<a class="btn full" href="${esc(p.githubUrl)}" target="_blank" rel="noopener">${esc(t("btn.code"))}</a>` : ""}
+            ${p.youtube ? `<a class="btn full" href="https://www.youtube.com/watch?v=${esc(p.youtube)}" target="_blank" rel="noopener">${esc(t("btn.trailer"))}</a>` : ""}
           </div>
         </aside>
       </div>

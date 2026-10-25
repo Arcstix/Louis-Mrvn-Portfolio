@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" data-title-key="meta.title.collection">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/theme.js"></script>
+  <script src="js/i18n.js"></script>
 </head>
 <body>
   <div class="frame">
@@ -17,10 +18,13 @@
     <a class="brand" href="index.html">LM<span>.dev</span></a>
     <div class="top-right">
       <nav>
-        <a href="index.html">← Retour à la machine</a>
-        <a href="index.html#projets">Projets</a>
+        <a href="index.html" data-i18n="nav.backMachine">← Retour à la machine</a>
+        <a href="index.html#projets" data-i18n="nav.projects">Projets</a>
       </nav>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Changer de thème">
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch to English">
+        <span data-lang="fr">FR</span><span data-lang="en">EN</span>
+      </button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Changer de thème" data-i18n-attr="aria-label:theme.label">
         <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
         <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
       </button>
@@ -29,9 +33,9 @@
 
   <main class="wrap collection" id="collectionRoot">
     <div class="p-head">
-      <p class="label">// collection</p>
-      <h1>Mes cartes</h1>
-      <p class="tagline">Toutes les cartes de la machine. Celles que vous n'avez pas encore tirées restent cachées.</p>
+      <p class="label" data-i18n="col.label">// collection</p>
+      <h1 data-i18n="col.title">Mes cartes</h1>
+      <p class="tagline" data-i18n="col.tagline">Toutes les cartes de la machine. Celles que vous n'avez pas encore tirées restent cachées.</p>
     </div>
 
     <div class="col-progress">
@@ -43,35 +47,37 @@
     </div>
 
     <div class="col-empty" id="colEmpty" hidden>
-      <p>Vous n'avez encore aucune carte.</p>
-      <a class="btn primary" href="index.html">Tirer le levier</a>
+      <p data-i18n="col.empty">Vous n'avez encore aucune carte.</p>
+      <a class="btn primary" href="index.html" data-i18n="col.pull">Tirer le levier</a>
     </div>
 
-    <div class="filters" id="colFilters" role="group" aria-label="Filtrer les cartes">
-      <button class="chip" type="button" data-group="kind" data-v="all" aria-pressed="true">Toutes</button>
-      <button class="chip" type="button" data-group="kind" data-v="skill" aria-pressed="false">Compétences</button>
-      <button class="chip" type="button" data-group="kind" data-v="project" aria-pressed="false">Projets</button>
-      <button class="chip" type="button" data-group="kind" data-v="profile" aria-pressed="false">Profil</button>
+    <div class="filters" id="colFilters" role="group" aria-label="Filtrer les cartes" data-i18n-attr="aria-label:col.filters">
+      <button class="chip" type="button" data-group="kind" data-v="all" aria-pressed="true" data-i18n="col.f.all">Toutes</button>
+      <button class="chip" type="button" data-group="kind" data-v="skill" aria-pressed="false" data-i18n="col.f.skills">Compétences</button>
+      <button class="chip" type="button" data-group="kind" data-v="project" aria-pressed="false" data-i18n="col.f.projects">Projets</button>
+      <button class="chip" type="button" data-group="kind" data-v="profile" aria-pressed="false" data-i18n="col.f.profile">Profil</button>
       <span class="filter-sep" aria-hidden="true"></span>
-      <button class="chip" type="button" data-group="own" data-v="all" aria-pressed="true">Tout</button>
-      <button class="chip" type="button" data-group="own" data-v="owned" aria-pressed="false">Obtenues</button>
-      <button class="chip" type="button" data-group="own" data-v="missing" aria-pressed="false">Manquantes</button>
+      <button class="chip" type="button" data-group="own" data-v="all" aria-pressed="true" data-i18n="col.f.any">Tout</button>
+      <button class="chip" type="button" data-group="own" data-v="owned" aria-pressed="false" data-i18n="col.f.owned">Obtenues</button>
+      <button class="chip" type="button" data-group="own" data-v="missing" aria-pressed="false" data-i18n="col.f.missing">Manquantes</button>
     </div>
 
     <div class="tgrid" id="colGrid"></div>
 
     <div class="col-tools">
-      <button class="btn" type="button" id="btnUnlock">Pas le temps ? Tout révéler</button>
-      <button class="btn" type="button" id="btnReset">Remettre à zéro</button>
+      <button class="btn" type="button" id="btnUnlock" data-i18n="col.unlock">Pas le temps ? Tout révéler</button>
+      <button class="btn" type="button" id="btnReset" data-i18n="col.reset">Remettre à zéro</button>
     </div>
   </main>
 
-  <footer class="footer mono muted">Fait main · HTML / CSS / JS · hébergé sur GitHub Pages</footer>
+  <footer class="footer mono muted" data-i18n="footer">Fait main · HTML / CSS / JS · hébergé sur GitHub Pages</footer>
   </div>
 
+  <script>I18N.applyStatic();</script>
   <script src="js/bg.js"></script>
 
   <script src="js/data.js"></script>
+  <script src="js/data.en.js"></script>
   <script src="js/cards.js"></script>
 </body>
 </html>

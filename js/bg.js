@@ -1,5 +1,5 @@
 /* =========================================================================
-   FOND ANIMÉ : colonnes de code qui défilent (C# Unity, C++ Unreal, Python bpy)
+   FOND ANIMÉ : colonnes de code qui défilent (C# Unity, C++ Unreal)
    + une ligne tapée en direct avec un curseur.
 
    Performance :
@@ -102,21 +102,24 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* Input)
     EIC->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AMyCharacter::Move);
     EIC->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);
 }`,
-`# batch_export.py - Blender addon
-import bpy
+`// CameraShake.cs
+public class CameraShake : MonoBehaviour
+{
+    [SerializeField] private float maxOffset = 0.4f;
+    [SerializeField] private float decay = 1.8f;
+    private float trauma;
 
-class EXPORT_OT_batch_fbx(bpy.types.Operator):
-    bl_idname = "export.batch_fbx"
-    bl_label = "Batch export FBX"
+    public void AddTrauma(float amount) => trauma = Mathf.Clamp01(trauma + amount);
 
-    def execute(self, context):
-        for obj in context.selected_objects:
-            bpy.ops.object.select_all(action="DESELECT")
-            obj.select_set(True)
-            path = bpy.path.abspath(f"//export/{obj.name}.fbx")
-            bpy.ops.export_scene.fbx(filepath=path, use_selection=True,
-                                     axis_forward="-Z", axis_up="Y")
-        return {"FINISHED"}`,
+    void LateUpdate()
+    {
+        float shake = trauma * trauma;
+        float x = (Mathf.PerlinNoise(Time.time * 25f, 0f) * 2f - 1f) * maxOffset * shake;
+        float y = (Mathf.PerlinNoise(0f, Time.time * 25f) * 2f - 1f) * maxOffset * shake;
+        transform.localPosition = new Vector3(x, y, 0f);
+        trauma = Mathf.Max(0f, trauma - decay * Time.deltaTime);
+    }
+}`,
 `// SpatialHash.cs
 public void Insert(Entity e)
 {
@@ -149,7 +152,7 @@ void Frame(float dt)
     "Debug.Log($\"FPS: {1f / Time.unscaledDeltaTime:F0}\");",
     "UE_LOG(LogTemp, Warning, TEXT(\"Hello Unreal\"));",
     "git push origin main",
-    "bpy.ops.export_scene.gltf(filepath=out, export_format=\"GLB\")",
+    "Instantiate(prefab, spawnPoint.position, Quaternion.identity);",
     "// TODO: polish the game feel",
     "return isGrounded || coyoteTimer > 0f;"
   ];

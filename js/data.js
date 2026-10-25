@@ -13,19 +13,19 @@ window.PORTFOLIO = {
   // Laisser "" pour afficher le placeholder.
   photo: "assets/Photo_Profil.jpg",
 
-  skills: ["Unity", "C#", "Unreal Engine", "C++", "Blender", "Python", "Git / GitHub"],
+  skills: ["Unity", "C#", "Unreal Engine", "C++", "Blender", "Git / GitHub"],
 
   about: [
       "Depuis tout petit, la réalité virtuelle me fascine. Tout a commencé avec Ready Player One et Sword Art Online : deux œuvres qui m’ont donné envie de construire des mondes imaginaires plus vrais que nature.",
     "Avec le temps, j’ai compris que ce qui me passionne, ce n’est pas tant la technologie elle-même que ce qu’elle permet de faire vivre. Mon objectif est de créer des expériences immersives qui rendent la magie crédible et qui procurent de vraies émotions aux joueurs.",
-    "Je travaille principalement sur Unity en C#. En ce moment je monte en compétence sur Unreal Engine et le C++. Je modélise sur Blender et j'écris des addons Python pour accélérer mon pipeline.",
+    "Je travaille principalement sur Unity en C#. En ce moment je monte en compétence sur Unreal Engine et le C++. Je modélise aussi en 3D sur Blender.",
   ],
 
   stats: [
     ["Moteur principal", "Unity · C#"],
     ["En apprentissage", "Unreal · C++"],
     ["3D", "Blender"],
-    ["Langue(s)", "Français, Anglais"]
+    ["Langue(s)", "Français, Anglais (TOEIC)"]
   ],
 
   // Du plus récent au plus ancien
@@ -72,23 +72,23 @@ window.PORTFOLIO = {
 
   cards: [
     { id: "unity", kind: "skill", rarity: "gold", title: "Unity", glyph: "U", color: "#e8ebf2", icon: "",
-      stat: "5 ans d'expérience", text: "Mon moteur principal : gameplay, outils d'éditeur, UI, optimisation." },
+      stat: "4 ans d'expérience", text: "Mon moteur principal : gameplay, outils d'éditeur, UI, optimisation." },
     { id: "csharp", kind: "skill", rarity: "gold", title: "C#", glyph: "C#", color: "#b48cff", icon: "",
-      stat: "Depuis 2022", text: "Langage que je maîtrise le mieux : POO, design patterns, async, LINQ." },
+      stat: "4 ans d'expérience", text: "Langage que je maîtrise le mieux : POO, design patterns, async, LINQ." },
     { id: "unreal", kind: "skill", rarity: "silver", title: "Unreal Engine", glyph: "UE", color: "#cfd6e4", icon: "",
       stat: "En apprentissage", text: "Actors, Components, Blueprints et Enhanced Input, étudiés en Mastère." },
     { id: "cpp", kind: "skill", rarity: "silver", title: "C++", glyph: "C++", color: "#6aa8ff", icon: "",
       stat: "En apprentissage", text: "Pointeurs, mémoire, macros Unreal (UPROPERTY, UFUNCTION)." },
     { id: "blender", kind: "skill", rarity: "silver", title: "Blender", glyph: "B", color: "#ffb84d", icon: "",
-      stat: "Depuis 2023", text: "Modélisation, UV, export FBX / glTF vers Unity et Unreal." },
-    { id: "python", kind: "skill", rarity: "bronze", title: "Python", glyph: "Py", color: "#ffd84d", icon: "",
-      stat: "Addons Blender", text: "Scripts bpy pour automatiser mon pipeline 3D." },
+      stat: "Depuis 2023", text: "Modélisation, UV, export vers Unity et Unreal. Mon tout premier modèle 3D ? Un dragon. Un sacré défi pour débuter !" },
+    { id: "passion-vr", kind: "profile", rarity: "silver", title: "Passion VR / AR", glyph: "VR", color: "#9b8cff", icon: "",
+      stat: "Ready Player One · SAO", text: "Ma passion pour la réalité virtuelle et la réalité augmentée vient de Ready Player One et Sword Art Online." },
     { id: "git", kind: "skill", rarity: "bronze", title: "Git / GitHub", glyph: "git", color: "#ff7a59", icon: "",
       stat: "Tous mes projets", text: "Branches, pull requests, Git LFS pour les assets." },
     { id: "master", kind: "profile", rarity: "bronze", title: "Mastère", glyph: "M1", color: "#5ef0b5", icon: "",
       stat: "Game Programming · 1re année", text: "ICAN, Paris. Gameplay, moteurs, C++ et IA." },
     { id: "langues", kind: "profile", rarity: "bronze", title: "Langues", glyph: "FR", color: "#5ef0b5", icon: "",
-      stat: "Français · Anglais", text: "[Niveau d'anglais, certification éventuelle.]" },
+      stat: "Français · Anglais", text: "Anglais courant, certifié par le TOEIC." },
 
       { id: "card-oryn", kind: "project", rarity: "gold", project: "projet-oryn",
           stat: "Projet de fin de Bachelor", text: "Contrôleur attraction / répulsion et IA de caméras de surveillance." },

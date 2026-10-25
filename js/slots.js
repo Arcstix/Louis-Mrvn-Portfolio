@@ -8,6 +8,7 @@
   const machine = document.getElementById("machine");
   if (!machine || !window.Cards) return;
   const D = window.PORTFOLIO;
+  const L = (k, v) => (window.I18N ? I18N.t(k, v) : k);
 
   const reels = [...machine.querySelectorAll(".reel .strip")];
   const lever = document.getElementById("lever");
@@ -31,7 +32,7 @@
       oddsEl.innerHTML = Object.keys(D.rarity).map((r) =>
         `<li><span class="rc r-${r}">${D.rarity[r].label}</span> ${(o[r] * 100).toFixed(0)} %</li>`).join("");
     }
-    if (Cards.count >= Cards.total) setMsg("Collection complète ! 🎉");
+    if (Cards.count >= Cards.total) setMsg(L("slot.complete"));
   }
   function setMsg(t) { msg.textContent = t; }
 
@@ -101,7 +102,7 @@
 
     const card = Cards.draw();
     if (!card) {
-      setMsg("Collection complète ! 🎉");
+      setMsg(L("slot.complete"));
       await springBack;
       await spinReels(["7", "7", "7"], false);
       machine.classList.add("win-gold");
@@ -113,7 +114,7 @@
     const sym = D.rarity[card.rarity].symbol;
     await spinReels([sym, sym, sym], card.rarity === "gold");
     machine.classList.add(`win-${card.rarity}`);
-    setMsg(`${D.rarity[card.rarity].label} !`);
+    setMsg(L("slot.win", { r: D.rarity[card.rarity].label }));
 
     // la carte sort de la fente
     eject.className = `card-eject r-${card.rarity}`;
@@ -125,10 +126,10 @@
     refresh();
     Cards.openModal(card, {
       reveal: true,
-      title: `Nouvelle carte · ${D.rarity[card.rarity].label}`,
-      actions: (card.href ? `<a class="btn" href="${card.href}">Voir le projet</a>` : "") +
-               `<a class="btn" href="collection.html">Collection (${Cards.count}/${Cards.total})</a>` +
-               (Cards.count < Cards.total ? `<button class="btn primary" type="button" id="cmAgain">Tirer encore</button>` : "")
+      title: L("slot.newCard", { r: D.rarity[card.rarity].label }),
+      actions: (card.href ? `<a class="btn" href="${card.href}">${L("btn.viewProject")}</a>` : "") +
+               `<a class="btn" href="collection.html">${L("btn.collection", { n: Cards.count, t: Cards.total })}</a>` +
+               (Cards.count < Cards.total ? `<button class="btn primary" type="button" id="cmAgain">${L("btn.again")}</button>` : "")
     });
     const again = document.getElementById("cmAgain");
     if (again) again.addEventListener("click", () => { Cards.closeModal(); setTimeout(() => pull(), 150); }, { once: true });
@@ -141,7 +142,7 @@
   }
   document.addEventListener("cards:closed", () => {
     eject.classList.remove("out");
-    if (Cards.count < Cards.total) setMsg("Tirez le levier !");
+    if (Cards.count < Cards.total) setMsg(L("slot.pull"));
   });
 
   /* ---------------- Entrées : clic, glisser, clavier ---------------- */

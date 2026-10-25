@@ -15,6 +15,10 @@ js/data.js        TOUT le contenu du site (projets, parcours, liens) ← à modi
 js/site.js        Génère les pages à partir de data.js
 js/cards.js       Cartes : tirage, sauvegarde, rendu, page Collection
 js/slots.js       La machine à sous (levier, rouleaux, éjection, révélation)
+js/theme.js       Mode jour / nuit
+js/i18n.js        Langue FR / EN + textes fixes de l'interface
+js/data.en.js     Traductions anglaises du contenu de data.js
+js/bg.js          Fond animé (colonnes de code qui défilent)
 assets/           CV (CV_Louis_Morvan.pdf), images de couverture, logos des cartes
 ```
 
@@ -56,3 +60,13 @@ Dans `js/data.js`, tableau `cards` :
 - Le tirage est **pondéré et sans remise** : une carte obtenue ne peut plus sortir.
 - La collection est sauvegardée dans le navigateur du visiteur (localStorage).
   La page Collection propose « Tout révéler » pour les recruteurs pressés, et une remise à zéro.
+
+## Version anglaise
+
+- Le bouton **FR / EN** en haut de chaque page change la langue. Le choix suit d'une page à l'autre.
+- Par défaut : français si le navigateur du visiteur est en français, anglais sinon.
+- **Contenu** (projets, cartes, parcours, « Qui suis-je ») : `js/data.en.js`, rangé par `id`.
+  Quand tu ajoutes un projet ou une carte dans `data.js`, ajoute sa traduction dans `data.en.js`
+  avec le même `id`. S'il manque une traduction, le texte français s'affiche.
+- **Parcours** : les entrées de `timeline` dans `data.en.js` sont dans le même ordre que dans `data.js`.
+- **Textes de l'interface** (menus, boutons, titres) : dictionnaire `STRINGS` dans `js/i18n.js`.
