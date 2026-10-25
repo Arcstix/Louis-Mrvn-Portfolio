@@ -11,14 +11,14 @@ window.PORTFOLIO = {
 
   // Photo de la section "Qui suis-je" (format portrait conseillé, ex. 800 x 1000 px).
   // Laisser "" pour afficher le placeholder.
-  photo: "",
+  photo: "assets/Photo_Profil.jpg",
 
   skills: ["Unity", "C#", "Unreal Engine", "C++", "Blender", "Python", "Git / GitHub"],
 
   about: [
-    "J'ai 25 ans et je suis en 1re année de Mastère Game Programming. Ce qui me plaît, c'est la partie invisible du jeu : les systèmes de gameplay, l'IA, les outils, et tout ce qui rend un contrôle agréable en main.",
+      "Depuis tout petit, la réalité virtuelle me fascine. Tout a commencé avec Ready Player One et Sword Art Online : deux œuvres qui m’ont donné envie de construire des mondes imaginaires plus vrais que nature.",
+    "Avec le temps, j’ai compris que ce qui me passionne, ce n’est pas tant la technologie elle-même que ce qu’elle permet de faire vivre. Mon objectif est de créer des expériences immersives qui rendent la magie crédible et qui procurent de vraies émotions aux joueurs.",
     "Je travaille principalement sur Unity en C#. En ce moment je monte en compétence sur Unreal Engine et le C++. Je modélise sur Blender et j'écris des addons Python pour accélérer mon pipeline.",
-    "Je cherche [un stage / une alternance] à partir de [date]."
   ],
 
   stats: [
@@ -30,22 +30,28 @@ window.PORTFOLIO = {
 
   // Du plus récent au plus ancien
   timeline: [
-    { type: "edu", date: "2026 — 2028", title: "Mastère Game Programming", place: "[Nom de l'école], [Ville]",
-      text: "Programmation gameplay, moteurs, C++, IA, réseau. Projets de groupe avec des game designers et des artistes." },
-    { type: "pro", date: "2025 · 4 mois", title: "Stage développeur Unity", place: "[Studio / entreprise]",
-      text: "[Ce que vous avez fait : systèmes développés, outils, résultats concrets.]" },
-    { type: "edu", date: "2023 — 2026", title: "Bachelor [intitulé]", place: "[Nom de l'école], [Ville]",
-      text: "[Contenu principal de la formation.]" },
-    { type: "pro", date: "2022", title: "[Poste]", place: "[Entreprise]",
-      text: "[Description courte.]" }
+    { type: "edu", date: "2026 — 2028", title: "Mastère Game Programming", place: "ICAN, Paris",
+      text: "Programmation gameplay, Unity, C#, Unreal, C++, IA. Projets de groupe avec des game designers et des artistes." },
+    { type: "pro", date: "2026 · 6 mois", title: "Stage développeur R&D", place: "EDF, Palaiseau",
+      text: " Analyse des facteurs causant la cyber cinétose. Développement de solutions techniques. Regroupement de plusieurs applications au sein d'un outil unique." },
+    { type: "pro", date: "2024 — 2026", title: "Game Master", place: "Glorious Escape, Vélizy-Villacoublay",
+      text: "Accueil des joueurs, explication des règles et acting." }, 
+    { type: "pro", date: "2025 · 2 mois", title: "Stage Unity Développeur RA", place: "Immersize Studio, Remote",
+      text: "Veille technologique sur la modélisation 3D et la RA. Création d'un Escape Game en réalité augmentée." },
+    { type: "edu", date: "2023 — 2025", title: "Bachelor Game Design", place: "ICAN, Paris",
+      text: "Programmation gameplay, Unity, C#, Game Design, Blender. Plusieurs projets en groupe de 6 avec chacun un rôle" },
+    { type: "edu", date: "2022 · 6 mois", title: "Associate Game Developer", place: "3W ACADEMY, Remote",
+      text: "Programmation gameplay, Unity, C#" }, 
+    { type: "edu", date: "2019 — 2021", title: "DUT Mesures Physiques", place: "Université d'Orsay, Paris-Saclay",
+      text: "Métrologie, mathématique, mécanique des fluides, système embarqué et programmation" }
   ],
 
   contact: [
     { label: "E-mail", url: "mailto:louis.morvan01@gmail.com" },
-    { label: "GitHub", url: "https://github.com/[pseudo]" },
-    { label: "itch.io", url: "https://[pseudo].itch.io" },
-    { label: "YouTube", url: "https://youtube.com/@[chaine]" },
-    { label: "LinkedIn", url: "https://linkedin.com/in/[profil]" }
+    { label: "GitHub", url: "https://github.com/Arcstix" },
+    { label: "itch.io", url: "https://louismrvn.itch.io" },
+    { label: "YouTube", url: "https://youtube.com/@louismorvan2798" },
+    { label: "LinkedIn", url: "https://linkedin.com/in/louis-morvan" }
   ],
 
   /* ---------------------------------------------------------------------
@@ -99,117 +105,116 @@ window.PORTFOLIO = {
      --------------------------------------------------------------------- */
   projects: [
     {
-      id: "projet-exemple-1",
-      title: "Nom du jeu 1",
-      tagline: "Action roguelite en vue du dessus.",
+      id: "projet-be-quiet",
+      title: "Be Quiet",
+      tagline: "Horror survival game",
+      engine: "Unreal",
+      language: "C++, Blueprints",
+      category: "Unreal",
+      duration: "3 mois",
+      team: "2 personnes (2 dev)",
+      context: "Projet 1er année de Mastère Game Programming",
+      year: "2026",
+      role: "Développement de l'outil",
+      status: "Disponible sur GitHub",
+      cover: "assets/CoverBQ.png",
+      color: "#9b8cff",
+      youtube: "",
+      itchUrl: "https://louismrvn.itch.io/be-quiet",
+      itchEmbed: "",
+      githubUrl: "https://github.com/Arcstix/UE_Stealth_Game",
+      summary: "Tu es coincé dans un bâtiment avec un monstre et ton objectif et de sortir de cette endroit en faisant le moins de bruit possible.",
+      contributions: [
+          "Déplacement du personnage joueur",
+          "Mécanique d'émission/réception de son"
+      ],
+      challenges: [
+          { title: "Impact des murs sur le son", text: "Afin d'avoir un système équilibré il était important que le son émis par le joueur soit plus difficile à entendre pour le monstre s'ils ne se trouvent pas dans la même pièce." }
+      ]
+    },
+    {
+      id: "projet-oryn",
+      title: "Oryn",
+      tagline: "Fast Platformer 3D",
+      engine: "Unity",
+      language: "C#",
+      category: "Unity",
+      duration: "1 an",
+      team: "6 personnes (1 dev, 2 GD, 3 artistes)",
+      context: "Projet de fin de Bachelor",
+      year: "2025",
+      role: "Gameplay programmer",
+      status: "Terminé",
+      cover: "assets/CoverOryn.png",            // ex : "assets/projet1.jpg" (laisser vide = visuel généré)
+      color: "#ff5d73",
+      youtube: "Jg9qDAzFxKM",          // ex : "dQw4w9WgXcQ"
+      itchUrl: "https://louismrvn.itch.io/oryn",          // ex : "https://pseudo.itch.io/mon-jeu"
+      itchEmbed: "",        // ex : "1234567"
+      githubUrl: "https://github.com/Arcstix/ProjetAnnuel3GD",
+      summary: "Ce jeu possède 2 mécaniques complémentaire d'attraction et de répulsion. Le joueur utilise sa mécanique d'attraction pour se déplacer et sa mécanique de répulsion pour détruire les obstacles sur son chemin.",
+      contributions: [
+        "Contrôleur du personnage (déplacement, attraction et répulsion des objets).",
+        "IA ennemie avec machine à états style caméra de surveillance."
+      ],
+      challenges: [
+        { title: "Défi technique n°1", text: "Le problème principal était d'avoir une évolution fluide entre les phases d'attraction et de répulsion. Ma solution a été de faire une machine à état. Le résultat donne des phases bien distinct et évite des superpositions non voulu dans les mécaniques." },
+        { title: "Défi technique n°2", text: "Le comportement des objets qui permettent d'utiliser la mécanique principale a été très différent tout au long du développement. Cela m'a demandé de créer un système modulaire qui permet de passer d'un comportement à un autre facilement pour les tests." }
+      ]
+    },
+    {
+      id: "projet-traffic-hell",
+      title: "Traffic Hell",
+      tagline: "Puzzle traffic simulator",
+      engine: "Unity",
+      language: "C#",
+      category: "Unity",
+      duration: "6 mois",
+      team: "5 personnes (2 dev, 1 GD, 2 artistes)",
+      context: "Projet fin de 2ème année de Bachelor",
+      year: "2024",
+      role: "Programmation",
+      status: "Terminé",
+      cover: "assets/CoverTH.gif",
+      color: "#4dd6c4",
+      youtube: "fVmDPDCKa-c",
+      itchUrl: "https://tuturgames.itch.io/traffic-hell",
+      itchEmbed: "",
+      githubUrl: "",
+      summary: "Dans Traffic Hell, semez le chaos au sein d'une ville calme et tranquille. Provoquez des carambolages afin d'augmenter votre jauge de chaos et faite en sorte que la ville ne soit plus capable de s'en remettre.",
+      contributions: [
+        "Logique de conduite des voitures",
+        "Création d'un outil afin de réaliser des niveaux plus facilement dans Unity."
+      ],
+      challenges: [
+        { title: "Un simulateur dans un jeu", text: "L'état initial du jeu doit faire en sorte qu'il n'y ait aucun accident sans l'intervention du joueur. Il était donc crucial d'implémenter les différentes règles du code de la route dans le comportement des voitures. " }
+      ]
+    },
+    {
+      id: "projet-stellar-hive",
+      title: "Stellar Hive",
+      tagline: "Prototype jouet",
       engine: "Unity",
       language: "C#",
       category: "Unity",
       duration: "3 mois",
-      team: "4 personnes (2 dev, 1 GD, 1 artiste)",
-      context: "Projet de cours",
-      year: "2026",
-      role: "Gameplay programmer",
+      team: "3 personnes (1 dev, 1 GD, 1 artiste)",
+      context: "Projet début de 2ème année de Bachelor",
+      year: "2023",
+      role: "Programmation",
       status: "Terminé",
-      cover: "",            // ex : "assets/projet1.jpg" (laisser vide = visuel généré)
-      color: "#ff5d73",
-      youtube: "",          // ex : "dQw4w9WgXcQ"
-      itchUrl: "",          // ex : "https://pseudo.itch.io/mon-jeu"
-      itchEmbed: "",        // ex : "1234567"
-      githubUrl: "",
-      summary: "Décrivez le jeu en deux ou trois phrases : le pitch, la boucle de gameplay, ce qui le rend intéressant.",
-      contributions: [
-        "Contrôleur du personnage (déplacement, dash, combo d'attaques).",
-        "IA ennemie avec machine à états (patrouille, poursuite, attaque).",
-        "Système de vagues piloté par ScriptableObjects."
-      ],
-      challenges: [
-        { title: "Défi technique n°1", text: "Le problème rencontré, la solution choisie et pourquoi, le résultat." },
-        { title: "Défi technique n°2", text: "Exemple : passage de 300 à 2000 ennemis à l'écran grâce au pooling et au Job System." }
-      ]
-    },
-    {
-      id: "projet-exemple-2",
-      title: "Nom du jeu 2",
-      tagline: "Puzzle-platformer réalisé en game jam.",
-      engine: "Unity",
-      language: "C#",
-      category: "Unity",
-      duration: "48 heures",
-      team: "Solo",
-      context: "Game jam",
-      year: "2025",
-      role: "Programmation, game design",
-      status: "Jouable en ligne",
-      cover: "",
-      color: "#4dd6c4",
-      youtube: "",
-      itchUrl: "",
-      itchEmbed: "",
-      githubUrl: "",
-      summary: "Pitch du jeu de jam, thème imposé et comment il a été interprété.",
-      contributions: [
-        "Physique du saut : coyote time, jump buffer, gravité variable.",
-        "Éditeur de niveaux simple sous forme d'outil Unity."
-      ],
-      challenges: [
-        { title: "Livrer en 48 h", text: "Comment le scope a été réduit et priorisé." }
-      ]
-    },
-    {
-      id: "projet-exemple-3",
-      title: "Prototype Unreal",
-      tagline: "Premier projet Unreal Engine en C++.",
-      engine: "Unreal Engine 5",
-      language: "C++ / Blueprints",
-      category: "Unreal",
-      duration: "En cours",
-      team: "Solo",
-      context: "Projet personnel",
-      year: "2026",
-      role: "Tout",
-      status: "En développement",
-      cover: "",
+      cover: "assets/CoverSH.png",
       color: "#ffb84d",
-      youtube: "",
-      itchUrl: "",
+      youtube: "NbMCMNL1Jjg",
+      itchUrl: "https://lonknico.itch.io/stellar-hive",
       itchEmbed: "",
-      githubUrl: "",
-      summary: "Ce que ce projet vous apprend sur Unreal : Actors, Components, GAS, Enhanced Input…",
+      githubUrl: "https://github.com/Arcstix/ProjetSemestriel2GDA",
+      summary: "Incarne une étoile blanche capable d'attirer les autres de couleur autour d'elle. Accumule un maximum d'étoile et profite du feu d'artifice en les faisant toutes exploser.",
       contributions: [
-        "Personnage en C++ avec Enhanced Input.",
-        "Composant de santé réutilisable exposé aux Blueprints."
+        "Control du personnage",
+        "Système de suivi des étoiles"
       ],
       challenges: [
-        { title: "Passer de Unity à Unreal", text: "Les différences qui ont demandé le plus d'adaptation et comment vous les avez abordées." }
-      ]
-    },
-    {
-      id: "addon-blender",
-      title: "Addon Blender",
-      tagline: "Outil Python pour automatiser l'export vers le moteur.",
-      engine: "Blender",
-      language: "Python (bpy)",
-      category: "Outils",
-      duration: "2 semaines",
-      team: "Solo",
-      context: "Outil personnel",
-      year: "2026",
-      role: "Développement de l'outil",
-      status: "Disponible sur GitHub",
-      cover: "",
-      color: "#9b8cff",
-      youtube: "",
-      itchUrl: "",
-      itchEmbed: "",
-      githubUrl: "",
-      summary: "Ce que fait l'addon et le temps qu'il fait gagner.",
-      contributions: [
-        "Export FBX en lot avec échelle et axes corrects pour Unity / Unreal.",
-        "Panneau dans la sidebar du viewport (N)."
-      ],
-      challenges: [
-        { title: "Gestion du contexte", text: "Exécuter des opérateurs hors du viewport sans erreur de contexte." }
+        { title: "Optimisation du comportement des étoiles", text: "Ce jeu repose entièrement sur de la physique ce qui amène des problèmes de performance quand de nombreuses étoiles commencent à suivre le joueur. Ma solution a été de désactiver la physique sur les étoiles qui sont entourées par d'autres étoiles." }
       ]
     }
   ]
